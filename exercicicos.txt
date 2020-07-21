@@ -3,6 +3,10 @@ O que é uma coluna de junção inversa?
 - É uma coluna que une as primary keys de 2 tabelas e junta em uma tabela de
 junção que é responsavel de guardar a essas primary keys que serao unificaram.
 
+Trocamos ManyToMany por OneToMany?
+
+- Para criarmos uma tabela associativa.
+
 
 Atividade  para avaliação.
 
