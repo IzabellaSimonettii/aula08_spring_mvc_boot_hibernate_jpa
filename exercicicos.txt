@@ -1,0 +1,20 @@
+O que é uma coluna de junção inversa? 
+
+- É uma coluna que une as primary keys de 2 tabelas e junta em uma tabela de
+junção que é responsavel de guardar a essas primary keys que serao unificaram.
+
+
+Atividade  para avaliação.
+
+1.  Estabeleça um relacionamento 1 x N entre a classe Veículo já existente e uma nova classe chamada Pessoa: 
+Uma pessoa tem N veículos e um veículo pertence a uma única pessoa.Faça as anotações apropriadas usando a JPA.
+
+
+2. Considere que uma locadora deseja alugar veículos eventualmente associados a reboques. Um reboque é uma espécie
+de veículo (não precisa pensar em herança aqui) que também templaca. Assim, resolva os seguintes itens:   
+
+    2.1  Estabeleça um relacionamento N X N entre Veículo e Reboque sem usar classe associativa.   
+    
+    2.2  Refaça o relacionamento N X N entre Veículo e Reboque usando uma classe associativa.
+    A classe associativa deve ter, como atributo, a data em que o aluguel do par Veículo x Reboque ocorreu. 
+    Use o tipo java.util.Date.
