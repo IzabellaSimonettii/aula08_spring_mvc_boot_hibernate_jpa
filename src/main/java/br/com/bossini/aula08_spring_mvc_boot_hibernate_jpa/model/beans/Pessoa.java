@@ -13,8 +13,12 @@ public class Pessoa {
     private Long id;
     private String nome;
 
+//    EXERCICIO 1
     @OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL)
     private List<Veiculo> veiculos;
+
+    @ManyToMany(mappedBy = "pessoa", cascade = CascadeType.ALL)
+    private List<Reboque> reboques;
 
     public void setVeiculos(List<Veiculo> veiculos) {
         this.veiculos = veiculos;

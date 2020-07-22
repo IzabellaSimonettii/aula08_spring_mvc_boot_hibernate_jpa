@@ -1,14 +1,15 @@
 package br.com.bossini.aula08_spring_mvc_boot_hibernate_jpa.model.beans;
 
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "tb_veiculo")
-public class Veiculo {
+@Table(name = "tb_reboque")
+public class Reboque {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
 
     @Column(nullable = false, length = 60)
@@ -20,24 +21,25 @@ public class Veiculo {
     @Column(nullable = false)
     private int anoModelo;
 
+
     @OneToOne(optional = false)
-    @JoinColumn(name = "jtb_identificador")
+    @JoinColumn(name = "jtb_identificador_placa")
     private Placa placa;
 
-//    EXERCERCICIO 1
-    @ManyToOne
-    private Pessoa pessoa;
+    //    EXERCERCICIO 2
+    @ManyToMany
+    private List<Pessoa> pessoas;
 
-//    EXERCERCICIO 2.2
-    @ManyToMany(mappedBy = "veiculo")
+//   EXERCERCICIO 2.2
+    @ManyToMany(mappedBy = "reboque")
     private List<VeiculoReboque> veiculoReboque;
 
-    public void setPessoa(Pessoa pessoa) {
-        this.pessoa = pessoa;
+    public List<Pessoa> getPessoas() {
+        return pessoas;
     }
 
-    public Pessoa getPessoa() {
-        return pessoa;
+    public void setPessoas(List<Pessoa> pessoas) {
+        this.pessoas = pessoas;
     }
 
     public Placa getPlaca() {
@@ -91,19 +93,19 @@ public class Veiculo {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Veiculo)) return false;
-        Veiculo veiculo = (Veiculo) o;
-        return getAnoModelo() == veiculo.getAnoModelo() &&
-                getId().equals(veiculo.getId()) &&
-                getMarca().equals(veiculo.getMarca()) &&
-                getModelo().equals(veiculo.getModelo()) &&
-                getPlaca().equals(veiculo.getPlaca()) &&
-                getPessoa().equals(veiculo.getPessoa());
+        if (!(o instanceof Reboque)) return false;
+        Reboque reboque = (Reboque) o;
+        return getAnoModelo() == reboque.getAnoModelo() &&
+                getId().equals(reboque.getId()) &&
+                getMarca().equals(reboque.getMarca()) &&
+                getModelo().equals(reboque.getModelo()) &&
+                getPlaca().equals(reboque.getPlaca()) &&
+                getPessoas().equals(reboque.getPessoas());
     }
 
     @Override
     public String toString() {
-        return "Veiculo [id=" + id + ", marca=" + marca + ", modelo=" + modelo + ", anoModelo=" + anoModelo + ", placa="
+        return "Reboque [id=" + id + ", marca=" + marca + ", modelo=" + modelo + ", anoModelo=" + anoModelo + ", placa="
                 + placa + "]";
     }
 
